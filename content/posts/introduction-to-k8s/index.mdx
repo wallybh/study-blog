@@ -1,0 +1,36 @@
+---
+title: Introduction to Kubernetes
+date: 2022-03-13
+defer: false
+tags:
+  - Kubernetes
+---
+
+Conforme pode ser lido na home do site [kubernetes.io](https://kubernetes.io/), o Kubernetes ou apenas k8s é um sistema open-source para a automação de implantação, escalonamento e gestão de aplicações em container.
+
+### Clusters Kubernetes
+
+O k8s coordena grupos de computadores (clusters) de forma com que as aplicações possam funcionar com alta disponibilidade. 
+O k8s abstrai esse grupo de computadores, permitindo que você possa publicar aplicações containerizadas sem se preocupar com as máquinas individualmente.
+Assim, o kubernetes automatiza a distribuição de aplicações containerizadas de uma forma eficiente.
+
+Um cluster kubernetes é composto de duas partes.
+
+1. O Control Plane que irá coordenar o cluster;
+2. Os Nodes que irão executar as aplicações;
+
+O control plane é responsável por coordenar o cluster. Ele é responsável por agendar a execução de aplicações, manter o estado desejado das aplicações, escalar as aplicações e executar publicações.
+
+O node pode ser uma máquina física ou uma VM. Em cada node existe um Kubelet que é responsável por gerenciar o node e se comunicar com o control plane.
+O node também deve ter ferramentas para manipular os containers como o containerd ou o docker.
+
+Quando publicamos aplicações no kubernetes, estamos dizendo para o control plane iniciar os containers da aplicação. O control plane vai agendar a criação dos containers das aplicações nos nodes disponíveis.
+Os nodes se comunicam com o controlplane por uma api que o control plane disponibiliza.
+
+# Deployment controller
+
+Um Deployment é uma forma de configurar uma aplicação com um estado desejado, um número de replicas desejado e qual o container desejado.
+O Deployment irá dizer para o k8s como criar e atualizar essa aplicação.
+Ao criar um Deployment, o control plane agendará as instancias das aplicações requisitadas.
+Após a criação das aplicações, o controller irá monitorar todas as instâncias. Se um node ou uma aplicação fica indisponível o controller substitui essa instancia.
+Assim, temos um mecanismo que automaticamente se recupera de falhas.
