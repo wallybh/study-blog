@@ -1,0 +1,45 @@
+---
+title: Gerenciamento de processos linux
+date: 2022-03-13
+defer: false
+tags:
+  - Linux
+  - PS
+---
+
+Um processo é uma instância em execução de um comando. Também pode ser definido como uma unidade de execução onde o programa é executado.
+
+O processo tem um ID, e esse ID é único naquele sistema. Mas isso não impede que um outro processo tenha um ID já utilizado por um outro processo que já tenha terminado sua execução.
+
+O processo também está associado a um usuário e um grupo. E isso determina até onde o processo poderá acessar determinados recursos. Por exemplo, um processo de um usuário root possui muito mais acesso aos arquivos do sistema do que um processo executado por um usuário comum.
+Como o processo está vinculado a um usuário, se N usuários executarem um mesmo comando, esse mesmo comando terá N processos.
+
+A maioria das informações do processo vão estar no sistema de arquivos `/proc`. É de onde os comandos de gerenciamento de processos vão recolher as informações.
+Cada processo armazena suas informações em um subdiretório cujo nome é o ID do processo.
+
+## Listando processos
+
+O comando mais antigo e comum para listar processos é o comando ps. O comando top fornece uma abordagem orientado para a tela e fornece mais opções.
+
+### PS
+
+O comando ps exibe informações sobre os processos sendo executados. Ele possui várias formas de parametrização: UNIX (um hífen antes da opção), BSD (sem o hífen antes da opção) e 'GNU long options' (dois hífens antes da opção).
+
+O comando por default irá exibir a lista de processos do usuário que está chamando o comando.
+
+Ao utilizar o comando `ps u`, a lista de processos será exibida junto com mais informações como usuário, momento em que o processo foi iniciado, uso de memória e cpu etc.
+
+A coluna USER é o usuário que iniciou o processo.
+
+PID é a coluna que indica qual o id do processo.
+
+%CPU e %MEM mostram as percentagens de processador e memória que o processo está consumindo.
+
+VSZ (virtual set size) indica o tamanho do processo de imagem (em kilobytes) e RSS (resident set size)) exibe o tamanho do programa na memória. 
+Ou seja, VSZ é a quantidade de memória alocada para o processo, enquanto que RSS é a quantidade que realmente esá sendo utilizada.
+
+START exibe a hora em que o processo começou a rodar.
+
+TIME exibe o tempo acumulado de uso do sistema. Vários processos vão exibir o tempo 0:00 pois são processos que não usaram nem um segundo de tempo de cpu.
+
+Para ver os processos que estão executando de todos os usuários, o ps tem o paramêtro aux.
