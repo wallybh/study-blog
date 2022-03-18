@@ -1,3 +1,3 @@
 User-agent: *
 
-sitemap: https://minimal-blog.lekoarts.de/sitemap.xml
+sitemap: https://study-blog-psi.vercel.app/sitemap/sitemap-index.xml

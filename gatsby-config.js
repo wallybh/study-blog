@@ -10,7 +10,7 @@ module.exports = {
     siteTitle: `Wally's study blog`,
     siteTitleAlt: `Wally's study blog - Gatsby Theme`,
     siteHeadline: `Wally's study blog - Gatsby Theme from @lekoarts`,
-    siteUrl: `https://minimal-blog.lekoarts.de`,
+    siteUrl: `https://study-blog-psi.vercel.app`,
     siteDescription: `Typography driven, feature-rich blogging theme with minimal aesthetics. Includes tags/categories support and extensive features for code blocks such as live preview, line numbers, and line highlighting.`,
     siteLanguage: `en`,
     siteImage: `/banner.jpg`,
@@ -131,7 +131,7 @@ module.exports = {
               }
             `,
             output: `rss.xml`,
-            title: `Wally's study blog - @lekoarts/gatsby-theme-minimal-blog`,
+            title: `Wally's study blog`,
           },
         ],
       },
