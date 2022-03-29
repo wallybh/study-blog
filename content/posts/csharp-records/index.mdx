@@ -1,0 +1,36 @@
+---
+title: C# records
+date: 2022-03-29
+defer: false
+tags:
+  - Csharp
+---
+
+Esse texto é uma tradução livre e de baixa fidelidade do post [Explore record types](https://docs.microsoft.com/en-us/dotnet/csharp/whats-new/tutorials/records)  escrito pela microsoft.
+
+O C# 9 introduziu o conceito de records. Um novo tipo por referência que será uma alternativa a classes ou structs. No C# 10 foi adicionado o tipo 'record struct' que são records que são tipos por valor.
+
+Uma das diferenças de records para classes é que ele possui um conceito de 'value-based equality', isso significa que quando dois records ao serem comparados,
+eles serão iguais se o tipo deles forem iguais e se todos os campos forem iguais. 
+Ao comparar duas variáveis de um tipo classe, elas serão iguais se os tipos forem iguais e se as duas variáveis são referenciadas para o mesmo objeto.
+
+### Características de um record
+
+O record pode ser declarado com a keyword `record`. Também pode ser declarado como `record class` para deixar explícito que é um tipo por referência ou `record struct` para definir um record que é um tipo por valor.
+Tanto para `record struct` ou `record class`, o compilador irá gerar métodos para garantir o conceito 'value-base equality'. Sendo eles:
+- Uma sobrecarga do método `Object.Equals(Object)`;
+- Um método `Equals` virtual cujo paramêtro é o tipo do record;
+- Uma sobrecarga do método `Object.GetHashCode()`;
+- Métodos para os operadores == e =!;
+- Implementam a interface System.IEquatable'<T>';
+
+
+Records também tem uma sobrecarga do método `ToString()`. Records também suportam expressões `with` para permitir mutações de records não destrutivas.
+
+Você também pode declarar *positional records* para ter uma sintaxe mais concisa. Quanto utilizado, o compilador sintetiza mais métodos:
+
+- Um construtor primário que terá a mesma ordem de parâmetros definida na reclaração do record;
+- Propriedades públicas para cada parâmetro do construtor primário. Essas propriedades são *init-only* para `record class` e readonly para `record struct`. E para esse último eles são *read-write*;
+- Um método `Deconstruct` para extrair as propriedades do record.
+
+
